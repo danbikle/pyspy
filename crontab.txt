@@ -1,6 +1,12 @@
 # ~/pyspy/crontab.txt
 # Demo:
 # cron ~/pyspy/crontab.txt
-# This crontab should help me run pyspy at 12:50PM M-F
+# This crontab should help me run pyspy at 12:50PM M-F Calif time
 50 12 * * mon,tue,wed,thu,fri ${HOME}/pyspy/bin/noon50.bash > /tmp/noon50_bash.txt 2>&1
+# Or NY time:
+# 50 15 * * mon,tue,wed,thu,fri ${HOME}/pyspy/bin/noon50.bash > /tmp/noon50_bash.txt 2>&1
+# Or Winter UTC time:
+# 50 20 * * mon,tue,wed,thu,fri ${HOME}/pyspy/bin/noon50.bash > /tmp/noon50_bash.txt 2>&1
+# Or Summer UTC time:
+# 50 19 * * mon,tue,wed,thu,fri ${HOME}/pyspy/bin/noon50.bash > /tmp/noon50_bash.txt 2>&1
 #
