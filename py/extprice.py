@@ -2,11 +2,14 @@
 
 # This script should extract recent date, prices from html
 
+# Demo:
+# python ~/pyspy/py/extprice.py
+
 import bs4
 import datetime
 import pdb
 
-soup   = bs4.BeautifulSoup(open("GSPC.html"))
+soup   = bs4.BeautifulSoup(open("GSPC.html"), "lxml")
 span0  = soup.find(id="yfs_market_time")
 date_l = span0.string.split(",")[:3]
 date_s = date_l[1]+date_l[2]
