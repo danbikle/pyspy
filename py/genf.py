@@ -12,7 +12,7 @@ import pdb
 
 # I should check cmd line arg
 import sys
-pdb.set_trace()
+
 print('hello, from '+ sys.argv[0])
 
 #  len(sys.argv) should == 2
