@@ -1,8 +1,8 @@
-# gen_talib_f.py
+# talib_demo.py
 
 # Demo:
-# cd     ~/ddata
-# python ~/pyspy/py/gen_talib_f.py ftrGSPC2.csv
+# cd     ~/pyspy/demodata
+# python ~/pyspy/py/talib_demo.py ftrGSPC2.csv
 
 import pandas as pd
 import numpy  as np
@@ -16,7 +16,7 @@ import sys
 if len(sys.argv) == 1:
   print('Demo:')
   print('cd ~/ddata')
-  print('python ~/pyspy/py/gen_talib_f.py ftrGSPC2.csv')
+  print('python ~/pyspy/py/talib_demo.py ftrGSPC2.csv')
   print('...')
   sys.exit()
 
