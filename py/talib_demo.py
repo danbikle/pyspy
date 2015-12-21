@@ -97,9 +97,18 @@ df1     = pd.read_csv('ftrGSPC2.csv')
 cdate_l = list(df1['cdate'].values)
 cp_a    = df1['cp'].values
 
-pdb.set_trace()
-
+# http://www.tadoc.org/indicator/APO.htm
 apo_a = talib.APO(cp_a, fastperiod=12, slowperiod=26, matype=0)
 
+# http://www.tadoc.org/indicator/CMO.htm
+cmo_a = talib.CMO(cp_a, timeperiod=14)
+
+# http://www.tadoc.org/indicator/MACD.htm
+macd_a, macdsignal_a, macdhist_a = talib.MACD(cp_a, fastperiod=12, slowperiod=26, signalperiod=9)
+
+pdb.set_trace()
+
+# http://www.tadoc.org/indicator/ROC.htm
+roc_a = talib.ROC(cp_a, timeperiod=10)
 
 'end'
