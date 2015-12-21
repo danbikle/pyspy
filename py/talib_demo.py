@@ -117,6 +117,20 @@ rsi_a = talib.RSI(cp_a, timeperiod=14)
 
 # http://www.tadoc.org/indicator/HT_PHASOR.htm
 inphase_a, quadrature_a = talib.HT_PHASOR(cp_a)
-pdb.set_trace()
+
+# http://mrjbq7.github.io/ta-lib/func_groups/statistic_functions.html
+
+# http://www.tadoc.org/indicator/LINEARREG.htm
+line_a = talib.LINEARREG(cp_a, timeperiod=14)
+
+# http://www.tadoc.org/indicator/STDDEV.htm
+std_a =  talib.STDDEV(cp_a, timeperiod=5, nbdev=1)
+
+# Write them to CSV:
+
+df4 = pd.DataFrame(cdate_l)
+df4.columns = ['cdate']
+df4['cp']   = list(cp_a)
+df4.to_csv('/tmp/misc.csv', float_format='%4.3f', index=False)
 
 'end'
