@@ -77,8 +77,10 @@ upperband_a, middleband_a, lowerband_a = abstract.BBANDS(input_arrays, timeperio
 
 df3 = pd.DataFrame(cdate_l)
 df3.columns = ['cdate']
-pdb.set_trace()
+
 df3['close']  = close_l
 df3['upperband']  = list(upperband_a)
+df3['middleband'] = list(middleband_a)
+df3['lowerband']  = list(lowerband_a)
 
 'end'
