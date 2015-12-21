@@ -53,8 +53,9 @@ from talib import abstract
 # http://mrjbq7.github.io/ta-lib/abstract.html
 
 # Notice that first param is my dataframe named df1:
-
-sma2_df = abstract.SMA(df1, timeperiod=25, price='cp')
+sma2_sr = abstract.SMA(df1, timeperiod=25, price='cp')
+sma2_df = pd.DataFrame(df1['cdate'])
+sma2_df['sma'] = list(sma2_sr)
 sma2_df.to_csv('/tmp/sma2.csv', float_format='%4.3f', index=False)
 
 # help(abstract.BBANDS)
