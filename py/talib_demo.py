@@ -130,7 +130,19 @@ std_a =  talib.STDDEV(cp_a, timeperiod=5, nbdev=1)
 
 df4 = pd.DataFrame(cdate_l)
 df4.columns = ['cdate']
-df4['cp']   = list(cp_a)
+df4['cp']         = list(cp_a)
+df4['apo']        = list(apo_a)
+df4['cmo']        = list(cmo_a)
+df4['macd']       = list(macd_a)
+df4['macdsignal'] = list(macdsignal_a)
+df4['macdhist']   = list(macdhist_a)
+df4['roc']        = list(roc_a)
+df4['rsi']        = list(rsi_a)
+df4['inphase']    = list(inphase_a)
+df4['quadrature'] = list(quadrature_a)
+df4['line']       = list(line_a)
+df4['std']        = list(std_a)
+
 df4.to_csv('/tmp/misc.csv', float_format='%4.3f', index=False)
 
 'end'
