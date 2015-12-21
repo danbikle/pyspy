@@ -64,20 +64,26 @@ pctlag4_a = 100.0 * (cp_a - cplag4_a)/cplag4_a
 pctlag8_a = 100.0 * (cp_a - cplag8_a)/cplag8_a
 
 # I am done doing calculations.
-# I should put my 5 new columns into my DataFrame.
+# I should put my columns into a DataFrame.
+# I should order by cdate ascending not descending because descending is ... wrong.
+cdate_l = list(reversed(df1['cdate'].values))
+cp_l    = list(reversed(df1['cp'   ].values))
+df2         = pd.DataFrame(cdate_l)
+df2.columns = ['cdate']
+df2['cp']   = cp_l
 
-df1['pctlead'] = pctlead_a
-df1['pctlag1'] = pctlag1_a
-df1['pctlag2'] = pctlag2_a
-df1['pctlag4'] = pctlag4_a
-df1['pctlag8'] = pctlag8_a
+df2['pctlead'] = list(reversed(pctlead_a))
+df2['pctlag1'] = list(reversed(pctlag1_a))
+df2['pctlag2'] = list(reversed(pctlag2_a))
+df2['pctlag4'] = list(reversed(pctlag4_a))
+df2['pctlag8'] = list(reversed(pctlag8_a))
 
 # I should save my work into a CSV file.
 # My input file should look something like this:
 # GSPC2.csv
 # I should save my work as something like this:
 # ftrGSPC2.csv
-df1.to_csv('ftr'+infile, float_format='%4.3f', index=False)
+df2.to_csv('ftr'+infile, float_format='%4.3f', index=False)
 print('The features are in this file:')
 print('ftr'+infile)
 print('Now the machine can learn.')

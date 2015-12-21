@@ -23,5 +23,8 @@ if len(sys.argv) == 1:
 infile      = sys.argv[1]
 df1         = pd.read_csv(infile)
 df1.columns = ['cdate','cp']
-cp_a        = df1[['cp']].values
+cp_a        = df1['cp'].values
 output      = talib.SMA(cp_a)
+
+pdb.set_trace()
+output[-9:]
