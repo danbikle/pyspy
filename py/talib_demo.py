@@ -3,6 +3,7 @@
 # Demo:
 # cd     ~/pyspy/demodata
 # python ~/pyspy/py/talib_demo.py ftrGSPC2.csv
+# http://www.tadoc.org/index.htm
 
 import pandas as pd
 import numpy  as np
@@ -12,8 +13,9 @@ import pdb
 # I should check cmd line arg
 import sys
 
-df1    = pd.read_csv('ftrGSPC2.csv')
-cp_a   = df1['cp'].values
+df1     = pd.read_csv('ftrGSPC2.csv')
+cdate_l = list(df1['cdate'].values)
+cp_a    = df1['cp'].values
 
 sma_a  = talib.SMA(cp_a)
 
@@ -87,4 +89,5 @@ df3['middleband'] = list(middleband_a)
 df3['lowerband']  = list(lowerband_a)
 # I should write Bollinger Bands to file
 df3.to_csv('/tmp/bbands1.csv', float_format='%4.3f', index=False)
+
 'end'
