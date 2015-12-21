@@ -56,7 +56,8 @@ from talib import abstract
 
 sma2_df = abstract.SMA(df1, timeperiod=25, price='cp')
 
-# upperband_df, middleband_df, lowerband_df = abstract.BBANDS(price=close, timeperiod=5, nbdevup=2, nbdevdn=2, matype=0)
+# help(abstract.BBANDS)
+# Here is a demo of abstract.BBANDS
 
 df2 = pd.read_csv('GSPC.csv')
 cdate_l  = list(reversed(df2['Date'  ].values))
@@ -66,14 +67,18 @@ low_l    = list(reversed(df2['Low'   ].values))
 close_l  = list(reversed(df2['Close' ].values))
 volume_l = list(reversed(df2['Volume'].values))
 
-df3 = pd.DataFrame(cdate_l)
-df3.columns   = ['cdate']
-df3['open']   = open_l
-df3['high']   = high_l
-df3['low']    = low_l
-df3['close']  = close_l
-df3['volume'] = volume_l
-pdb.set_trace()
-df3.tail()
-'end'
+input_arrays = {}
+input_arrays['open']   = np.array(open_l)
+input_arrays['high']   = np.array(high_l)
+input_arrays['low']    = np.array(low_l)
+input_arrays['close']  = np.array(close_l)
+input_arrays['volume'] = np.array(volume_l)
+upperband_a, middleband_a, lowerband_a = abstract.BBANDS(input_arrays, timeperiod=5, nbdevup=2, nbdevdn=2, matype=0)
 
+df3 = pd.DataFrame(cdate_l)
+df3.columns = ['cdate']
+pdb.set_trace()
+df3['close']  = close_l
+df3['upperband']  = list(upperband_a)
+
+'end'
