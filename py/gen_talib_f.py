@@ -25,3 +25,10 @@ df1    = pd.read_csv(infile)
 cp_a   = df1['cp'].values
 output = talib.SMA(cp_a)
 
+from talib import MA_Type
+upper, middle, lower = talib.BBANDS(cp_a, matype=MA_Type.T3)
+
+upper[ -4:]
+middle[-4:]
+lower[ -4:]
+
