@@ -106,9 +106,17 @@ cmo_a = talib.CMO(cp_a, timeperiod=14)
 # http://www.tadoc.org/indicator/MACD.htm
 macd_a, macdsignal_a, macdhist_a = talib.MACD(cp_a, fastperiod=12, slowperiod=26, signalperiod=9)
 
-pdb.set_trace()
-
 # http://www.tadoc.org/indicator/ROC.htm
 roc_a = talib.ROC(cp_a, timeperiod=10)
+
+# http://www.tadoc.org/indicator/RSI.htm
+rsi_a = talib.RSI(cp_a, timeperiod=14)
+
+# Demo of cycle indicators
+# http://mrjbq7.github.io/ta-lib/func_groups/cycle_indicators.html
+
+# http://www.tadoc.org/indicator/HT_PHASOR.htm
+inphase_a, quadrature_a = talib.HT_PHASOR(cp_a)
+pdb.set_trace()
 
 'end'
