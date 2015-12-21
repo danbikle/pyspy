@@ -90,4 +90,16 @@ df3['lowerband']  = list(lowerband_a)
 # I should write Bollinger Bands to file
 df3.to_csv('/tmp/bbands1.csv', float_format='%4.3f', index=False)
 
+# Demos of Momentum Indicators
+# http://mrjbq7.github.io/ta-lib/func_groups/momentum_indicators.html
+
+df1     = pd.read_csv('ftrGSPC2.csv')
+cdate_l = list(df1['cdate'].values)
+cp_a    = df1['cp'].values
+
+pdb.set_trace()
+
+apo_a = talib.APO(cp_a, fastperiod=12, slowperiod=26, matype=0)
+
+
 'end'
