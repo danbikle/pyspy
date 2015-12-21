@@ -56,6 +56,7 @@ from talib import abstract
 sma2_sr = abstract.SMA(df1, timeperiod=25, price='cp')
 sma2_df = pd.DataFrame(df1['cdate'])
 sma2_df['sma'] = list(sma2_sr)
+# I should write Simple Moving Avg to file
 sma2_df.to_csv('/tmp/sma2.csv', float_format='%4.3f', index=False)
 
 # help(abstract.BBANDS)
@@ -84,5 +85,6 @@ df3['close']  = close_l
 df3['upperband']  = list(upperband_a)
 df3['middleband'] = list(middleband_a)
 df3['lowerband']  = list(lowerband_a)
+# I should write Bollinger Bands to file
 df3.to_csv('/tmp/bbands1.csv', float_format='%4.3f', index=False)
 'end'
