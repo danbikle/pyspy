@@ -32,3 +32,5 @@ upper[ -4:]
 middle[-4:]
 lower[ -4:]
 
+pdb.set_trace()
+mom_l = talib.MOM(cp_a, timeperiod=5)
