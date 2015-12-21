@@ -55,6 +55,7 @@ from talib import abstract
 # Notice that first param is my dataframe named df1:
 
 sma2_df = abstract.SMA(df1, timeperiod=25, price='cp')
+sma2_df.to_csv('/tmp/sma2.csv', float_format='%4.3f', index=False)
 
 # help(abstract.BBANDS)
 # Here is a demo of abstract.BBANDS
@@ -82,5 +83,5 @@ df3['close']  = close_l
 df3['upperband']  = list(upperband_a)
 df3['middleband'] = list(middleband_a)
 df3['lowerband']  = list(lowerband_a)
-
+df3.to_csv('/tmp/bbands1.csv', float_format='%4.3f', index=False)
 'end'
