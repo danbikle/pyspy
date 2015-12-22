@@ -19,7 +19,7 @@ print('hello, from '+ sys.argv[0])
 if len(sys.argv) == 1:
   print('Demo:')
   print('cd ~/ddata')
-  print('python python ~/pyspy/py/genf.py GSPC2.csv')
+  print('python ~/pyspy/py/genf.py GSPC2.csv')
   print('...')
   sys.exit()
 
@@ -84,8 +84,5 @@ df2['pctlag8'] = list(reversed(pctlag8_a))
 # I should save my work as something like this:
 # ftrGSPC2.csv
 df2.to_csv('ftr'+infile, float_format='%4.3f', index=False)
-print('The features are in this file:')
-print('ftr'+infile)
-print('Now the machine can learn.')
 
 # done
