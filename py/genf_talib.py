@@ -45,8 +45,8 @@ df1['upf']  = list(upper_a / cp_a)
 df1['lowf'] = list(cp_a / lower_a)
 df1.to_csv('ftr_wbb_'+infile, float_format='%4.3f', index=False)
 
-
-# Let us look at upf and lowf.
+# I am done now but while I have the data available,
+# let us look at upf and lowf.
 # We start by asking,
 # What is avg pctlead?
 pctlead_a      = df1['pctlead'].values
