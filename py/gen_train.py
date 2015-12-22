@@ -12,7 +12,6 @@ import pdb
 
 # I should check cmd line arg
 import sys
-pdb.set_trace()
 
 #  len(sys.argv) == 4 should be true
 if len(sys.argv) < 4:
@@ -22,12 +21,12 @@ if len(sys.argv) < 4:
   print('...')
   sys.exit()
 
-yr1    = int(sys.argv[1])
-yr2    = int(sys.argv[2])
-infile =     sys.argv[3]
+yr1    = sys.argv[1]
+yr2    = sys.argv[2]
+infile = sys.argv[3]
 
 # I should load the csv into a DF.
 pdb.set_trace()
 df1 = pd.read_csv(infile)
-df2 = df1['cdate'>yr1]
-df3 = df2['cdate'<yr2]
+df2 = df1[df1.columns]['cdate'>yr1]
+df3 = df2[df1.columns]['cdate'<yr2]
