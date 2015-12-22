@@ -80,6 +80,27 @@ lead_a = np.array(lead_l) - np.array(cp_l)
 test_df['lead_delta'] = list(lead_a)
 test_df['actual_dir'] = [np.sign(lead_delta) for lead_delta in lead_a]
 
+# I should declare some integers to help me navigate the Array.
+prediction_i =  9
+pdir_i       = 10
+lead_delta_i = 11
+actual_dir_i = 12
+# I should get the array
+bg_a = test_df.values
+# I should calculate values of greenline
+gl   = []
+# Blue-line and greenline should start at same place:
+gl.append(bg_a[0,cp_i])
+# I should look at each row in bg_a
+for row in bg_a:
+  pdb.set_trace()
+  row
+  gl.append(row[pdir_i] * row[lead_delta_i])
+  'endloop'
+
+# I should remove the last entry from gl?
+
+
 # I should count positive predictions.
 posp_df  = test_df[['pdir','actual_dir']][test_df['pdir'] == 1]
 # I should count true positive predictions.
