@@ -17,4 +17,7 @@ python ${PYSPY}/py/gen_train.py 1987 2015 ftr_wbb_ftrGSPC2.csv
 python ${PYSPY}/py/gen_test.py  2015 2016 ftr_wbb_ftrGSPC2.csv
 # I should learn then test
 python ${PYSPY}/py/learn_test.py training.csv test.csv
+# I should visualize the predictions:
+python ${PYSPY}/py/plotem.py learn_test.csv
+exit
 
