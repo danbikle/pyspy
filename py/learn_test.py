@@ -55,10 +55,14 @@ label_test_a  = y_test_a  > train_median
 # http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html
 
 from sklearn import linear_model
-pdb.set_trace()
 lrmodel = linear_model.LogisticRegression()
 # I should use training data to train, also called 'fit' my lrmodel:
 lrmodel.fit(x_train_a, label_train_a)
+# Now that I have a model which has learned from x_train_a, label_train_a,
+# I will use it to generate predictions from x_test_a
 
-
-
+for xoos_a in x_test_a:
+  pdb.set_trace()
+  xoos_a
+  aprediction = lrmodel.predict_proba(xoos_a.astype(float))[0,1]
+  'looping'
