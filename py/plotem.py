@@ -43,7 +43,10 @@ matplotlib.use('Agg')
 # Order is important here.
 # Do not move the next import:
 import matplotlib.pyplot as plt
+plt.figure(figsize=(15,10)) # 10inch x 5inch
 plt.plot(cdate_l, cp_l, 'b-', cdate_l, gl_l, 'g-')
+plt.title('Blue-Line/Green-Line Visualization (Blue: Long Only, Green: Follow Predictions)')
+plt.grid(True)
 pngf = csvf.replace('.csv','')+'.png'
 plt.savefig(pngf)
 plt.close()
