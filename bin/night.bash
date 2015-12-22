@@ -15,3 +15,6 @@ python ${PYSPY}/py/genf_talib.py ftrGSPC2.csv
 python ${PYSPY}/py/gen_train.py 1987 2014 ftr_wbb_ftrGSPC2.csv
 # I should generate test     data from features.
 python ${PYSPY}/py/gen_test.py  2014 2016 ftr_wbb_ftrGSPC2.csv
+# I should learn then test
+python ${PYSPY}/py/learn_test.py training.csv test.csv
+
