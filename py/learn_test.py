@@ -62,7 +62,8 @@ lrmodel.fit(x_train_a, label_train_a)
 # I will use it to generate predictions from x_test_a
 
 for xoos_a in x_test_a:
-  pdb.set_trace()
-  xoos_a
-  aprediction = lrmodel.predict_proba(xoos_a.astype(float))[0,1]
+  xf_a        = xoos_a.astype(float)
+  xr_a        = xf_a.reshape(1, -1)
+  aprediction = lrmodel.predict_proba(xr_a)[0,1]
+
   'looping'
