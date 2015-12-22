@@ -60,10 +60,19 @@ lrmodel = linear_model.LogisticRegression()
 lrmodel.fit(x_train_a, label_train_a)
 # Now that I have a model which has learned from x_train_a, label_train_a,
 # I will use it to generate predictions from x_test_a
-
+predictions_l = []
 for xoos_a in x_test_a:
   xf_a        = xoos_a.astype(float)
   xr_a        = xf_a.reshape(1, -1)
   aprediction = lrmodel.predict_proba(xr_a)[0,1]
+  predictions_l.append(aprediction)
+len(test_df)         == len(predictions_l) # should be true
+# I should match the predictions to the test observations.
+test_df['prediction'] =     predictions_l
+# I should capture prediction 'direction'. Above 0.5 is bullish else bearish.
+test_df['pdir'] = [np.sign(prediction-0.5) for prediction in predictions_l]
+pdb.set_trace()
+# I should capture price deltas to help with later visualization.
+cp_a = test_df['cp'].values
+'done'
 
-  'looping'
