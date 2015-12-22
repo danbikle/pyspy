@@ -43,6 +43,11 @@ matplotlib.use('Agg')
 # Order is important here.
 # Do not move the next import:
 import matplotlib.pyplot as plt
-
-pdb.set_trace()
+plt.plot(cdate_l, cp_l, 'b-', cdate_l, gl_l, 'g-')
+pngf = csvf.replace('.csv','')+'.png'
+plt.savefig(pngf)
+plt.close()
+print('New png file: ')
+print(pngf)
 'done'
+
