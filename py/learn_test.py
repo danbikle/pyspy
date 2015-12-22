@@ -85,23 +85,25 @@ prediction_i =  9
 pdir_i       = 10
 lead_delta_i = 11
 actual_dir_i = 12
-# I should get the array
-bg_a = test_df.values
+greenline_i  = 13
+# I should get the array,
+# but result of last prediction unknown,
+# so avoid it:
+bg_a = (test_df.values)[:-1]
 # I should calculate values of greenline
-gl   = []
+greenline = []
 # Blue-line and greenline should start at same place:
-gl.append(bg_a[0,cp_i])
+greenline.append(bg_a[0,cp_i])
 # I should look at each row in bg_a
 row_i = 0
 for row in bg_a:
-  pdb.set_trace()
-  row
-  gl.append(gl[row_i]+(row[pdir_i] * row[lead_delta_i]))
+  greenline.append(greenline[row_i]+(row[pdir_i] * row[lead_delta_i]))
   row_i += 1
-  'endloop'
+# I should add greenline to test_df so I can chart it later
+test_df['greenline'] = greenline
 
-# I should remove the last entry from gl?
-
+# I should save test_df as CSV file:
+test_df.to_csv('learn_test.csv', float_format='%4.3f', index=False)
 
 # I should count positive predictions.
 posp_df  = test_df[['pdir','actual_dir']][test_df['pdir'] == 1]
