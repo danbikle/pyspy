@@ -92,10 +92,12 @@ gl   = []
 # Blue-line and greenline should start at same place:
 gl.append(bg_a[0,cp_i])
 # I should look at each row in bg_a
+row_i = 0
 for row in bg_a:
   pdb.set_trace()
   row
-  gl.append(row[pdir_i] * row[lead_delta_i])
+  gl.append(gl[row_i]+(row[pdir_i] * row[lead_delta_i]))
+  row_i += 1
   'endloop'
 
 # I should remove the last entry from gl?
