@@ -71,8 +71,14 @@ len(test_df)         == len(predictions_l) # should be true
 test_df['prediction'] =     predictions_l
 # I should capture prediction 'direction'. Above 0.5 is bullish else bearish.
 test_df['pdir'] = [np.sign(prediction-0.5) for prediction in predictions_l]
+# I should capture lead-price-deltas to help with later visualization.
+cp_l = list(test_df['cp'].values)
+lead_l = cp_l[1:] + [cp_l[len(cp_l)-1]]
+len(cp_l)             == len(lead_l)           # should be true
+lead_l[len(lead_l)-1] == lead_l[len(lead_l)-2] # should be true
+lead_a = np.array(lead_l) - np.array(cp_l)
+test_df['lead_delta'] = list(lead_a)
+test_df['actual_dir'] = [np.sign(lead_delta) for lead_delta in lead_a]
 pdb.set_trace()
-# I should capture price deltas to help with later visualization.
-cp_a = test_df['cp'].values
 'done'
 
