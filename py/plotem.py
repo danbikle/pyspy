@@ -25,7 +25,7 @@ if len(sys.argv) == 1:
   sys.exit()
 
 csvf = sys.argv[1]
-print(csvf)
+print('Plotting data from: '+csvf)
 
 # I should load the csv into a DataFrame
 df1 = pd.read_csv(csvf)

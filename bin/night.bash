@@ -20,4 +20,3 @@ python ${PYSPY}/py/learn_test.py training.csv test.csv
 # I should visualize the predictions:
 python ${PYSPY}/py/plotem.py learn_test.csv
 exit
-

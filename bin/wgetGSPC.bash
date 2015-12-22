@@ -6,7 +6,7 @@
 . ${HOME}/pyspy/pyspy_env.bash
 
 mkdir -p $DDATA
-cd    -p $DDATA
+cd       $DDATA
 
 TKRH='%5EGSPC'
 TKR='GSPC'
