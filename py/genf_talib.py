@@ -8,6 +8,7 @@
 
 import pandas as pd
 import numpy  as np
+import talib
 import pdb
 
 # I should check cmd line arg
@@ -30,6 +31,18 @@ print('Busy...')
 
 df1  = pd.read_csv(infile)
 
+
+
+# I should pull cp out of the df
+cp_a    = df1['cp'].values
+
+# I should calculate Bollinger Bands
+upper_a, middle_a, lower_a = talib.BBANDS(cp_a)
+
+# I should widen df before output
+df1['upf']  = list(upper_a / cp_a)
+df1['lowf'] = list(cp_a / lower_a)
 pdb.set_trace()
-df1.columns
+df1.head()
 df1.tail()
+'done'
