@@ -11,5 +11,7 @@ ${PYSPY}/bin/wgetGSPCnight.bash
 cd $DDATA
 python ${PYSPY}/py/genf.py       GSPC2.csv
 python ${PYSPY}/py/genf_talib.py ftrGSPC2.csv
-# I should generate training data (25yr) from features.
-python ${PYSPY}/py/gen_train.py 25 ftr_wbb_ftrGSPC2.csv
+# I should generate training data from features.
+python ${PYSPY}/py/gen_train.py 1987 2014 ftr_wbb_ftrGSPC2.csv
+# I should generate test     data from features.
+python ${PYSPY}/py/gen_test.py  2014 2016 ftr_wbb_ftrGSPC2.csv

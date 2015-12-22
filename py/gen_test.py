@@ -1,10 +1,10 @@
-# gen_train.py
+# gen_test.py
 
-# This script should generate training data.
+# This script should generate test data.
 
 # Demo:
 # cd ~/ddata
-# python ~/pyspy/py/gen_train.py 1987 2014 ftr_wbb_ftrGSPC2.csv
+# python ~/pyspy/py/gen_test.py 2014 2016 ftr_wbb_ftrGSPC2.csv
 
 import pandas as pd
 import numpy  as np
@@ -17,7 +17,7 @@ import sys
 if len(sys.argv) < 4:
   print('Demo:')
   print('cd ~/ddata')
-  print('python ~/pyspy/py/gen_train.py 1987 2014 ftr_wbb_ftrGSPC2.csv')
+  print('python ~/pyspy/py/gen_test.py  2014 2016 ftr_wbb_ftrGSPC2.csv')
   print('...')
   sys.exit()
 
@@ -34,5 +34,5 @@ df2   = df1[pred1]
 pred2 = df2['cdate']<yr2
 df3   = df2[pred2]
 # I should write it to CSV
-df3.to_csv('training.csv', float_format='%4.3f', index=False)
+df3.to_csv('test.csv', float_format='%4.3f', index=False)
 'done'
