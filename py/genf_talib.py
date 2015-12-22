@@ -14,9 +14,6 @@ import pdb
 # I should check cmd line arg
 import sys
 
-print('hello, from '+ sys.argv[0])
-
-#  len(sys.argv) should == 2
 if len(sys.argv) == 1:
   print('Demo:')
   print('cd ~/ddata')
@@ -30,8 +27,6 @@ print(infile)
 print('Busy...')
 
 df1  = pd.read_csv(infile)
-
-
 
 # I should pull cp out of the df
 cp_a    = df1['cp'].values
