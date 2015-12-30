@@ -88,7 +88,6 @@ cd      ta-lib-0.4.0-src
 make
 sudo make install
 pip install TA-Lib
-
 ```
 
 # Operate pyspy
@@ -193,6 +192,162 @@ I see that  the prediction issued on 2015-12-22 was -1.000 and that was a false 
 
 An example of a false positive is the prediction issued for 2015-12-17.
 
+I can use python to report on the predictions:
+
+```
+# rpt1.py
+
+import pandas as pd
+import numpy  as np
+import pdb
+
+test_df = pd.read_csv('learn_test.csv')
+
+# I should count positive predictions.
+posp_df  = test_df[['pdir','actual_dir']][test_df['pdir'] == 1]
+# I should count true positive predictions.
+tposp_df = posp_df[posp_df['actual_dir'] == 1]
+# I should calculate positive accuracy.
+pos_acc  = 100.0 * len(tposp_df)/len(posp_df)
+
+# I should count negative predictions.
+negp_df  = test_df[['pdir','actual_dir']][test_df['pdir'] == -1]
+# I should count true negative predictions.
+tnegp_df = negp_df[negp_df['actual_dir'] == -1]
+# I should calculate negative accuracy.
+neg_acc  = 100.0 * len(tnegp_df)/len(negp_df)
+
+# I should calculate combined accuracy
+com_acc  = 100.0 * (len(tposp_df)+len(tnegp_df))/len(test_df)
+
+# I should calculate 'effectiveness'.
+pos_pctlead_a = np.array(test_df[['pctlead']][test_df['pdir'] == 1])
+pos_eff       = np.mean(pos_pctlead_a)
+neg_pctlead_a = np.array(test_df[['pctlead']][test_df['pdir'] == -1])
+neg_eff       = np.mean(neg_pctlead_a)
+longonly_eff  = np.mean(test_df['pctlead'].values)
+# I should report
+print('True  positive count: '+str(len(tposp_df)))
+print('False positive count: '+str(len(posp_df)-len(tposp_df)))
+print('True  negative count: '+str(len(tnegp_df)))
+print('False negative count: '+str(len(negp_df)-len(tnegp_df)))
+
+print('Accuracy of positive predictions: ' +str(pos_acc)[:6]+'%')
+print('Accuracy of negative predictions: ' +str(neg_acc)[:6]+'%')
+print('Combined Accuracy of predictions: ' +str(com_acc)[:6]+'%')
+print('Positive Effectiveness: '  +str(pos_eff)[:6]+'%')
+print('Negative Effectiveness: '  +str(neg_eff)[:6]+'%')
+print('Long Only Effectiveness: ' +str(longonly_eff)[:6]+'%')
+```
+
+When I run the above script I should see something like this:
+
+```
+ann@nia111:~/ddata $ 
+ann@nia111:~/ddata $ 
+ann@nia111:~/ddata $ python rpt1.py
+True  positive count: 63
+False positive count: 60
+True  negative count: 71
+False negative count: 57
+Accuracy of positive predictions: 51.219%
+Accuracy of negative predictions: 55.468%
+Combined Accuracy of predictions: 53.386%
+Positive Effectiveness: 0.0403%
+Negative Effectiveness: -0.027%
+Long Only Effectiveness: 0.0057%
+ann@nia111:~/ddata $ 
+ann@nia111:~/ddata $ 
+```
+
+In addition to the above report, I have a script which creates the 'Blue-Line-Green-Line Visualization':
+
+```
+# plotem.py
+
+# This script should plot data in a CSV file
+
+# Demo:
+# cd ~/ddata
+# python ~/pyspy/py/plotem.py learn_test.csv
+
+import pandas as pd
+import numpy  as np
+import pdb
+import datetime
+
+# I should check cmd line arg
+import sys
+
+print('hello, from '+ sys.argv[0])
+
+#  len(sys.argv) should == 2
+if len(sys.argv) == 1:
+  print('I need a command line arg.')
+  print('Demo:')
+  print('python '+sys.argv[0]+' learn_test.csv')
+  print('Try again. bye.')
+  sys.exit()
+
+csvf = sys.argv[1]
+print('Plotting data from: '+csvf)
+
+# I should load the csv into a DataFrame
+df1 = pd.read_csv(csvf)
+
+# matplotlib likes dates:
+cdate_l = [datetime.datetime.strptime(row, "%Y-%m-%d") for row in df1['cdate'].values]
+# I should get values for y-axis now:
+cp_l = [row for row in df1['cp']       ] 
+gl_l = [row for row in df1['greenline']] 
+
+# I should plot
+import matplotlib
+# http://matplotlib.org/faq/howto_faq.html#generate-images-without-having-a-window-appear
+matplotlib.use('Agg')
+# Order is important here.
+# Do not move the next import:
+import matplotlib.pyplot as plt
+plt.figure(figsize=(15,10)) # 10inch x 5inch
+plt.plot(cdate_l, cp_l, 'b-', cdate_l, gl_l, 'g-')
+plt.title('Blue-Line/Green-Line Visualization (Blue: Long Only, Green: Follow Predictions)')
+plt.grid(True)
+pngf = csvf.replace('.csv','')+'.png'
+plt.savefig(pngf)
+plt.close()
+print('New png file: ')
+print(pngf)
+'done'
+```
+
+When I run that script I should see something like this:
+
+```
+ann@nia111:~/ddata $ python ~/pyspy/py/plotem.py learn_test.csv
+hello, from /home/ann/pyspy/py/plotem.py
+Plotting data from: learn_test.csv
+New png file: 
+learn_test.png
+ann@nia111:~/ddata $ 
+ann@nia111:~/ddata $ ls -latr 
+total 4428
+drwxrwxrwt 35 ann ann    4096 Dec 30 22:31 ..
+-rw-rw-r--  1 ann ann 1195127 Dec 30 22:37 GSPC.csv
+-rw-rw-r--  1 ann ann   72992 Dec 30 22:37 GSPC.html
+-rw-rw-r--  1 ann ann      19 Dec 30 22:37 GSPCrecent.csv
+-rw-rw-r--  1 ann ann  353937 Dec 30 22:37 GSPC3.csv
+-rw-rw-r--  1 ann ann  353937 Dec 30 22:37 GSPC2.csv
+-rw-rw-r--  1 ann ann  848847 Dec 30 22:37 ftrGSPC2.csv
+-rw-rw-r--  1 ann ann 1048088 Dec 30 22:37 ftr_wbb_ftrGSPC2.csv
+-rw-rw-r--  1 ann ann  450171 Dec 30 22:37 training.csv
+-rw-rw-r--  1 ann ann   16238 Dec 30 22:37 test.csv
+-rw-rw-r--  1 ann ann   25087 Dec 30 22:37 learn_test.csv
+-rw-rw-r--  1 ann ann    1699 Dec 30 23:22 rpt1.py
+drwxrwxr-x  2 ann ann    4096 Dec 30 23:22 .
+-rw-rw-r--  1 ann ann  135693 Dec 30 23:31 learn_test.png
+ann@nia111:~/ddata $ 
+ann@nia111:~/ddata $ 
+```
 
 
 Sometimes I will run pyspy at night after the most recent closing price is available:
