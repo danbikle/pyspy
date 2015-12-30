@@ -77,6 +77,27 @@ python
 quit()
 ```
 
+# Operate pyspy
+
+I operate pyspy by running a shell script at 12:50pm California time:
+
+```
+~/pyspy/bin/noon50.bash
+```
+
+Sometimes I will run pyspy at night after the most recent closing price is available:
+
+```
+~/pyspy/bin/night.bash
+```
+
+After pyspy runs, it will place files in this folder:
+
+```
+
+```
+
+
 
 
 
