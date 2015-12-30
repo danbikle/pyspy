@@ -77,6 +77,20 @@ python
 quit()
 ```
 
+Next I install talib:
+
+```
+cd ~
+curl http://skylineservers.dl.sourceforge.net/project/ta-lib/ta-lib/0.4.0/ta-lib-0.4.0-src.tar.gz > ta-lib-0.4.0-src.tar.gz
+tar zxf ta-lib-0.4.0-src.tar.gz
+cd      ta-lib-0.4.0-src
+./configure --prefix=/usr
+make
+sudo make install
+pip install TA-Lib
+
+```
+
 # Operate pyspy
 
 I operate pyspy by running a shell script at 12:50pm California time:
