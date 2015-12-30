@@ -360,6 +360,10 @@ Sometimes I will run pyspy at night after the most recent closing price is avail
 ~/pyspy/bin/night.bash
 ```
 
+If you have questions, e-me: bikle101 at gmail
+
+Thank you for studying pyspy today.
+
 
 
 
