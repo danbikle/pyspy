@@ -1,6 +1,9 @@
 #!/bin/bash
 
 # ~/pyspy/bin/night.bash
+
+# I should run this at night after daily closing price has been published.
+
 # Demo:
 # ~/pyspy/bin/night.bash
 . ${HOME}/pyspy/pyspy_env.bash
