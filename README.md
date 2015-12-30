@@ -349,6 +349,10 @@ ann@nia111:~/ddata $
 ann@nia111:~/ddata $ 
 ```
 
+I should see something like this in the learn_test.png file:
+
+![learn_test.png](demodata/learn_test.png)
+
 
 Sometimes I will run pyspy at night after the most recent closing price is available:
 
