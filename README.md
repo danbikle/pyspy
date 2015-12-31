@@ -1,13 +1,9 @@
 
 # pyspy
 
-This repo, pyspy, is under construction.
-
-It should contain more software when I present it to the Python Meetup 2016-01-18:
+I present this repository, pyspy, to the Python Meetup 2016-01-18:
 
 http://www.meetup.com/BayPIGgies/events/227481217
-
-Until then, pyspy is under construction.
 
 I intend for pyspy to run on Ubuntu 14 so I give instructions for installing and operating pyspy on Ubuntu 14.
 
