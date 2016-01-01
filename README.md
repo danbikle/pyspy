@@ -356,6 +356,10 @@ Sometimes I will run pyspy at night after the most recent closing price is avail
 ~/pyspy/bin/night.bash
 ```
 
+Another way to operate pyspy is to call it from herokuspy which is a repository I use to publish pyspy results to the web via heroku:
+
+https://github.com/danbikle/herokuspy
+
 If you have questions, e-me: bikle101 at gmail
 
 Thank you for studying pyspy today.
