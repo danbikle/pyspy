@@ -64,10 +64,9 @@ pctlag8_a = 100.0 * (cp_a - cplag8_a)/cplag8_a
 # I should put my columns into a DataFrame.
 # I should order by cdate ascending not descending because descending is ... wrong.
 cdate_l = list(reversed(df1['cdate'].values))
-cp_l    = list(reversed(df1['cp'   ].values))
 df2         = pd.DataFrame(cdate_l)
 df2.columns = ['cdate']
-df2['cp']   = cp_l
+df2['cp']   = cp
 
 df2['pctlead'] = pctlead_a
 df2['pctlag1'] = pctlag1_a
