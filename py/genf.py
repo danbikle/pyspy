@@ -29,20 +29,20 @@ df1  = pd.read_csv(infile)
 df1.columns = ['cdate','cp']
 
 cp_a = df1[['cp']].values
-# cp should be a list:
-cp   = [elm[0] for elm in cp_a]
+# cp should be a list sorted by date-ascending:
+cp   = [elm[0] for elm in reversed(cp_a)]
 
-cplead_l = [cp[0]] + cp
-cplag1_l = cp +     [cp[-1]]
-cplag2_l = cp +     [cp[-1]] + [cp[-1]]
-cplag4_l = cp +     [cp[-1]] + [cp[-1]] + [cp[-1]] + [cp[-1]]
-cplag8_l = cplag4_l + [cp[-1]] + [cp[-1]] + [cp[-1]] + [cp[-1]]
+cplead_l = cp + [cp[-1]]
+cplag1_l = [cp[0]] + cp
+cplag2_l = [cp[0],cp[0]]             + cp
+cplag4_l = [cp[0],cp[0],cp[0],cp[0]] + cp
+cplag8_l = [cp[0],cp[0],cp[0],cp[0]] + cplag4_l
 # I should snip off ends so new columns as long as cp:
-cplead_l = cplead_l[:-1]
-cplag1_l = cplag1_l[1:]
-cplag2_l = cplag2_l[2:]
-cplag4_l = cplag4_l[4:]
-cplag8_l = cplag8_l[8:]
+cplead_l = cplead_l[1:]
+cplag1_l = cplag1_l[:-1]
+cplag2_l = cplag2_l[:-2]
+cplag4_l = cplag4_l[:-4]
+cplag8_l = cplag8_l[:-8]
 
 # NumPy allows me to do arithmetic on its Arrays.
 # I should convert my lists to Arrays:
@@ -69,11 +69,11 @@ df2         = pd.DataFrame(cdate_l)
 df2.columns = ['cdate']
 df2['cp']   = cp_l
 
-df2['pctlead'] = list(reversed(pctlead_a))
-df2['pctlag1'] = list(reversed(pctlag1_a))
-df2['pctlag2'] = list(reversed(pctlag2_a))
-df2['pctlag4'] = list(reversed(pctlag4_a))
-df2['pctlag8'] = list(reversed(pctlag8_a))
+df2['pctlead'] = pctlead_a
+df2['pctlag1'] = pctlag1_a
+df2['pctlag2'] = pctlag2_a
+df2['pctlag4'] = pctlag4_a
+df2['pctlag8'] = pctlag8_a
 
 # I should save my work into a CSV file.
 # My input file should look something like this:
