@@ -72,7 +72,7 @@ test_df['prediction'] =     predictions_l
 # I should capture prediction 'direction'. Above 0.5 is bullish else bearish.
 test_df['pdir'] = [np.sign(prediction-0.5) for prediction in predictions_l]
 # I should capture lead-price-deltas to help with later visualization.
-cp_l = list(test_df['cp'].values)
+cp_l   = list(test_df['cp'].values)
 lead_l = cp_l[1:] + [cp_l[len(cp_l)-1]]
 len(cp_l)             == len(lead_l)           # should be true
 lead_l[len(lead_l)-1] == lead_l[len(lead_l)-2] # should be true
@@ -84,23 +84,21 @@ test_df['actual_dir'] = [np.sign(lead_delta) for lead_delta in lead_a]
 prediction_i =  9
 pdir_i       = 10
 lead_delta_i = 11
-actual_dir_i = 12
-greenline_i  = 13
 # I should get the array,
-# but result of last prediction unknown,
+# but the result of last prediction unknown,
 # so avoid it:
 bg_a = (test_df.values)[:-1]
 # I should calculate values of greenline
-greenline = []
+greenline_l = []
 # Blue-line and greenline should start at same place:
-greenline.append(bg_a[0,cp_i])
+greenline_l.append(bg_a[0,cp_i])
 # I should look at each row in bg_a
 row_i = 0
 for row in bg_a:
-  greenline.append(greenline[row_i]+(row[pdir_i] * row[lead_delta_i]))
+  greenline_l.append(greenline_l[row_i]+(row[pdir_i] * row[lead_delta_i]))
   row_i += 1
-# I should add greenline to test_df so I can chart it later
-test_df['greenline'] = greenline
+# I should add greenline_l to test_df so I can chart it later
+test_df['greenline'] = greenline_l
 
 # I should save test_df as CSV file:
 test_df.to_csv('learn_test.csv', float_format='%4.3f', index=False)
